@@ -1,50 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html", charset="utf-8" />
-  	<title>Twitter API SEARCH</title>
-</head>
-<body>
-	<form action="?go=search" method="post">
-		<label for="keyword">
-			<input type="text" name="keyword" >
-		</label>
-		<label>
-			<input type="submit" name="search"value="Search">
-		</label>
-	</form>
-
-</body>
-</html>
-
 <?php
+require_once "configurar.php";
 
-	include "twitteroauth/twitteroauth.php";
+?>''
 
-	$consumer_key = "CGQ1Er3rmkklEokk343pnyxkd";
-	$consumer_secret = "G6tUw8fdhsG3Ge8d5oaTaEz2meqCyrZkYc9vlKKdY9wUAHgVkT";
-	$access_token = "2386163342-D2CwrTGH5Dmmyjy4DluDEI733zh3Wo7StOItFM2";
-	$access_token_secret = "jC176ARhtgPItxmq8r5BhfG5eAHUW4GHr8Rx9rnqrUEZu";
+    <html>
+    <head>
+        <title>Login Corpus Linguistícos</title>
+        <meta http-equiv="Content-Type" content="text/html", charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="style-login-cadastro.css">
+    </head>
+    <body>
 
-	$twitter = new TwitterOAuth($consumer_key,$consumer_secret,$access_token,$access_token_secret);
+        <form action="?go=login" method="post">
+            <p id="logo">Corpus Linguistícos</p>
+            <div id="wrap">
+                <hr>
+                <label for="username">
+                    Usuário:
+                    <input name="username" id="username" type="text" />
+                </label>
+                
+                <label for="password">
+                    Senha:
+                    <input name="password" id="password" type="password" />
+                </label>
+                
+                <label for="login">
+                    <input name="login" id="register" type="submit" value="Login" />
+                </label>
+                
+                <hr>
+                <label for="sendpassword">
+                    <a href="Redefinir.php">Esqueci Usuário e/ou Senha</a>
+                </label>
+                
+                <label for="autologin">
+                    <input name="autologin" id="autologin" tabindex="4" checked="checked" class="radio" type="checkbox" /> Conexão automática
+                </label><br></br>
+                <a id="register" href="Register.php">Cadastrar-se</a>
+            </div>
+            <a id="copyrights" href="Index.php">Página Inicial</a>
+        </form>
+       
+    </body>
+    </html>
 
+    <?php
+
+    if (@$_GET ['go'] == "login"){
+        
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        
+        if(empty($username)){
+           echo "<script>alert('Preencha Todos os Campos Para Logar!')</script>";
+        }
+        elseif(empty($password)){
+            echo "<script>alert('Preencha Todos os Campos Para Logar!')</script>";
+        }
+        else{
+            $queryl = @mysql_fetch_row(mysql_query("SELECT * FROM USUARIOS WHERE USERNAME = '$username' AND PASSWORD = '$password'"));
+            if($queryl >= 1){
+                session_start();
+                $_SESSION["Logado"]=true;
+                $_SESSION["nome"]=$queryl[1];
+                echo "<script>alert('Login Sucessfull!')</script>";
+                echo "<meta http-equiv='refresh' content='0, url=Logado.php'>";
+            }
+            else{
+                echo "<script>alert('Usuário e Senha Não Coincidem')</script>";
+                echo "<meta http-equiv='refresh' content='0, url=Login.php'>";
+            }
+        }
+    }
 ?>
-
-<?php
-
-    if (@$_GET ['go'] == "search"){
-        
-       	$keyword = $_POST['keyword'];
-
-        if(empty($keyword)){
-           echo "<script>alert('Preencha Todos os Campos Para Pesquisar!')</script>";
-
-        }else{
-        
-	 		if(isset($_POST['keyword'])){
-	 				
-	 			$tweets = $twitter->get('https://api.twitter.com/1.1/search/tweets.json?q='.$_POST['keyword'].'&result_type=recent&count=50');
-				foreach ($tweets->statuses as $key => $tweet) { ?>
-				    Tweet : <img src="<?=$tweet->user->profile_image_url;?>" /><?=$tweet->text; ?><br>
-				<?php } } } } else{
-					} ?>
