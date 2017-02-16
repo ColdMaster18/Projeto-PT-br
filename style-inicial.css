@@ -1,0 +1,111 @@
+* { 
+	margin: 0;
+	padding: 0;
+}
+@font-face {
+	font-family: 'Sigmar One';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Sigmar One'), local('SigmarOne'), url(http://themes.googleusercontent.com/static/fonts/sigmarone/v4/aRAZJs6CY7SV6eSg6Wx4jxsxEYwM7FgeyaSgU71cLG0.woff) format('woff');
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+header{
+    margin: 0;
+    font: 14px Lucida;
+    background: #333 url('https://s-media-cache-ak0.pinimg.com/564x/32/7e/98/327e983bf836dbfcf8ca12241fa1f0a6.jpg') no-repeat;
+    -webkit-background-size: cover;
+	    -moz-background-size: cover;
+	        -o-background-size: cover;
+            background-size: cover;
+	color: #fff;
+}
+footer{
+	background-color: #ADD08B;
+    padding: 0;
+    text-align: center;
+    font: 13px Lucida;
+}
+ul {
+	background-image: url('http://camp.org.br/files/2013/10/fundo-verde.png');
+	list-style-type: none;
+	height: 41px;
+	width: 1366px;
+	margin: 0px;
+}
+li {
+	float: left;
+}
+li li a:hover{
+	list-style: block;
+}
+li a {
+	background-image: url('http://camp.org.br/files/2013/10/fundo-verde.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	padding-right: 140px;
+	padding-left: 152px;
+	position: center;
+	display: block;
+	line-height: 40px;
+	text-decoration: none;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 13px;
+	color: #371C1C;
+	margin: 1px;
+}
+li a:hover {
+	color: #474747;
+	background-image: url('http://weart.com.br/media/productcustom/cart_o_logo_verde_claro_v.jpg');
+}
+button{
+	background-color: #d3d3d3;
+    box-shadow: 0px 0px 0px 0px #474747 inset;
+    text-shadow: 0px -1px 0px #474747;
+    border: 1px solid #000;
+    border-radius: 0px;
+    color: #000;
+    cursor: pointer;
+    padding: .2em 1em;
+    display: inline-block;
+    margin: 0em 0em 3em;
+}
+button:hover{
+	background-color: #a3a1a1;
+    box-shadow: 0px 0px 0px 0px #474747 inset;
+    text-shadow: 0px -1px 0px #474747;
+    border: 1px solid #000;
+    border-radius: 0px;
+    color: #000;
+    cursor: pointer;
+    padding: .2em 1em;
+    display: inline-block;
+    margin: 0em 0em 3em;
+}
+#logo{
+	font: 30px 'Sigmar One';
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	text-shadow: rgba(0,0,0,1) 0 0 5px;
+}
+#copyrights{
+	font-size: 13px;
+	color: #000;
+}
+#pesquisar{
+	font: 6px 'Sigmar One';
+	text-align: center;
+	padding: 7px;
+	margin: 4px;
+	position: center;
+}
+#campo-pesquisa{
+	font: 6px 'Sigmar One';
+	padding: 7px;
+	margin: 4px;
+	text-align: center;
+	position: center;
+}
