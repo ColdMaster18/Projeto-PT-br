@@ -56,7 +56,7 @@ if (isset($_SESSION["Logado"])==false) {
 
         <?php
 
-    include "twitteroauth/twitteroauth.php";
+    include "twitteroauth.php";
 
     $consumer_key = "CGQ1Er3rmkklEokk343pnyxkd";
     $consumer_secret = "G6tUw8fdhsG3Ge8d5oaTaEz2meqCyrZkYc9vlKKdY9wUAHgVkT";
